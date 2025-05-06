@@ -18,13 +18,11 @@
     </div>
 </section>
 
-
-
 <div class="container-fluid blog py-5">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h4 class="text-primary">Our Blogs</h4>
-            <h1 class="display-4">Latest Articles & News from the Blogs</h1>
+            <h1 class="display-4">Latest Articles & News from the Blogs </h1>
         </div>
 
         <div class="row g-4 justify-content-center">
@@ -39,37 +37,15 @@
                         </div>
                     </div>
         
-                    <!-- Image and plus button section -->
+                    <!-- Image Section -->
                     <div class="project-img position-relative mb-4">
-                        <img src="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" class="img-fluid w-100 rounded" alt="Blog Image">
-        
-  <!-- Image clickable with zoom -->
-<div class="project-img position-relative mb-4">
-    <a href="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" target="_blank">
-        <img src="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" class="img-fluid w-100 rounded" alt="Blog Image">
-    </a>
-</div>
-
+                        <!-- Show a single image with a link for zoom -->
+                        <a href="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" target="_blank">
+                            <img src="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" class="img-fluid w-100 rounded" alt="Blog Image">
+                        </a>
                     </div>
         
-                    <style>
-                        .blog-plus-icon a {
-                            position: relative;
-                            display: inline-block;
-                            transition: transform 0.3s ease, box-shadow 0.3s ease;
-                        }
-        
-                        .blog-plus-icon a:hover {
-                            transform: scale(1.1); /* Slightly increase size on hover */
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow for hover effect */
-                        }
-        
-                        .project-img {
-                            position: relative; /* Ensure the absolute positioning of the "plus" button is relative to this container */
-                        }
-                    </style>
-        
-                    <!-- Linked title and description -->
+                    <!-- Title and description -->
                     <div class="my-4">
                         <a href="{{ route('blog.show', $blog->id) }}" class="h4 text-dark text-decoration-none">
                             {{ $blog->title }}
@@ -79,7 +55,7 @@
                         </p>
                     </div>
         
-                    <!-- Linked button -->
+                    <!-- Explore button -->
                     <a class="theme-btn btn-two" href="{{ route('blog.show', $blog->id) }}">
                         Explore More
                     </a>
@@ -87,11 +63,6 @@
             </div>
             @endforeach
         </div>
-        
-
-
-
-
     </div>
 </div>
 

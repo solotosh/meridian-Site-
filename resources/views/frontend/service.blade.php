@@ -154,11 +154,11 @@
 
 
         <!-- team-section -->
-        <section class="team-section sec-pad centred">
+        {{-- <section class="team-section sec-pad centred">
             <div class="auto-container">
                 <div class="sec-title">
                     <h5>Our Agents</h5>
-                    <h2>Meet Our Excellent Agents</h2>
+                    <h2>Meet Our Excellent Staffs</h2>
                 </div>
                 <div class="row clearfix">
                     @foreach($teamMembers as $index => $member)
@@ -184,39 +184,10 @@
                 </div>
             </div>
         </section>
-        
+         --}}
         <!-- team-section end -->
 
 
-        <!-- clients-section -->
-        <section class="clients-section bg-color-1">
-            <div class="pattern-layer" style="background-image: url({{ asset('assets/images/shape/shape-1.png') }});"></div>
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <div class="col-lg-4 col-md-12 col-sm-12 title-column">
-                        <div class="sec-title">
-                            <h5>Our Partners</h5>
-                            <h2>We’re going to Became Partners for the Long Run.</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12 col-sm-12 inner-column">
-                        <div class="clients-logo">
-                            <ul class="logo-list clearfix">
-                                @foreach($partners as $partner)
-                                <li>
-                                    <figure class="logo">
-                                        <a href="#"><img src="{{ asset($partner->image) }}" alt="{{ $partner->name }}"></a>
-                                    </figure>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- clients-section end -->
 
 
 

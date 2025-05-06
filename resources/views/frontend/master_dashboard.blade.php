@@ -59,41 +59,82 @@
   </style>
 
 <style>
-    /* Floating Button Container */
-/* Floating Buttons Styling */
+ /* Base Floating Button Container */
+/* Floating Buttons Container */
 .floating-buttons {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-/* Style for each button */
-.floating-buttons a {
-    background-color: #25d366; /* WhatsApp color */
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Common styles for all buttons */
+.floating-buttons a,
+.floating-buttons .contact-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #007bff;
+  transition: background-color 0.3s;
 }
 
+/* Icon styles */
+.floating-buttons a i,
+.floating-buttons .contact-toggle i {
+  font-size: 18px;
+}
+
+/* Button-specific background colors */
+.floating-buttons #whatsapp {
+  background-color: #25d366;
+}
 .floating-buttons #call {
-    background-color: #007bff; /* Blue for Call */
+  background-color: #007bff;
 }
-
 .floating-buttons #callback {
-    background-color: #28a745; /* Green for Request Callback */
+  background-color: #28a745;
 }
 
-.floating-buttons i {
-    font-size: 20px;
+/* Hover effects */
+.floating-buttons a:hover,
+.floating-buttons .contact-toggle:hover {
+  opacity: 0.9;
+}
+
+/* Desktop: Show all options, hide contact toggle */
+@media (min-width: 768px) {
+  .contact-toggle {
+    display: none !important;
+  }
+  .contact-options {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* Mobile: Hide options initially, show contact toggle */
+@media (max-width: 767px) {
+  .contact-options {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+  .floating-buttons.show .contact-options {
+    display: flex;
+  }
 }
 
 
@@ -168,18 +209,25 @@
 <body>
 
     <div class="boxed_wrapper">
-
-<!-- Floating Buttons (KEEP ONLY THIS BLOCK) -->
-<div class="floating-buttons" id="floating-buttons">
-  <a href="tel:+254797169127" id="call"><i class="fas fa-phone-alt"></i> Call</a>
-  <a 
-     href="https://wa.me/254797169127?text=Hello%20Admin,%20I%20am%20interested%20in%20your%20land%20surveying%20services.%20Can%20we%20book%20a%20call?" 
-     id="whatsapp" 
-     target="_blank">
-     <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
-  <a href="javascript:void(0);" id="callback"><i class="fas fa-phone"></i> Request Callback</a>
-</div>
+      <div class="floating-buttons" id="floating-buttons">
+        <!-- Toggle button for mobile -->
+        <button id="toggle-buttons" class="contact-toggle">
+          <i class="fas fa-comments"></i> Contact
+        </button>
+      
+        <!-- Contact options -->
+        <div class="contact-options">
+          <a href="tel:+254797169127" id="call"><i class="fas fa-phone-alt"></i> Call</a>
+          <a 
+            href="https://wa.me/254797169127?text=Hello%20Admin,%20I%20am%20interested%20in%20your%20land%20surveying%20services.%20Can%20we%20book%20a%20call?" 
+            id="whatsapp" 
+            target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="javascript:void(0);" id="callback"><i class="fas fa-phone"></i> Request Callback</a>
+        </div>
+      </div>
+      
 
 
   
@@ -227,15 +275,17 @@
         
     
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const contactBtn = document.getElementById("contact-btn");
-                const floatingButtons = document.getElementById("floating-buttons");
+          document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('toggle-buttons');
+            const floatingBox = document.getElementById('floating-buttons');
         
-                contactBtn.addEventListener("click", function () {
-                    floatingButtons.classList.toggle("active");
-                });
+            toggleBtn.addEventListener('click', function () {
+              floatingBox.classList.toggle('show');
             });
+          });
         </script>
+        
+        
  <a href="javascript:void(0);" id="callback"><i class="fas fa-phone"></i> Request Callback</a>
 
  <!-- SweetAlert2 CDN -->

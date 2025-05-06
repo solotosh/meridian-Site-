@@ -23,7 +23,7 @@
         <!-- Section Title -->
         <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h4 class="text-success text-uppercase mb-2">Our Blog</h4>
-            <h2 class="fw-bold text-dark fs-2">Latest Articles & News</h2>
+            <h2 class="fw-bold text-dark fs-2">Latest Articles & News bb</h2>
         </div>
 
         <!-- Category Filters -->
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="project-img position-relative mb-3">
-                        <img src="{{ asset($blog->image) }}" class="img-fluid w-100 rounded" alt="Blog Image">
+                       h
                         <div class="blog-plus-icon">
                             <a href="{{ asset($blog->image) }}" data-lightbox="blog-{{ $blog->id }}" class="btn btn-primary btn-md-square rounded-circle">
                                 <i class="fas fa-plus fa-sm"></i>
@@ -66,16 +66,34 @@
         <!-- Mobile Carousel -->
         <div class="owl-carousel blog-carousel d-md-none">
             @foreach($blogs as $blog)
-            <div class="blog-item bg-white rounded p-4 shadow-sm mx-2">
-                <h6 class="text-primary mb-2">{{ $blog->category ?? 'Uncategorized' }}</h6>
-                <div class="small text-muted mb-3"><strong>On</strong> {{ \Carbon\Carbon::parse($blog->published_at)->format('M d, Y') }} | <strong>By</strong> {{ $blog->author ?? 'Admin' }}</div>
-                <div class="project-img mb-3">
-                    <img src="{{ asset($blog->image) }}" class="img-fluid w-100 rounded" alt="Blog Image">
+    <div class="col-md-6 col-lg-6 col-xl-4 blog-item-box" data-category="{{ Str::slug($blog->category) }}">
+        <div class="blog-item bg-white rounded p-4 shadow-sm h-100">
+            <div class="mb-4">
+                <h6 class="text-primary mb-2">{{ $blog->category ?? 'Uncategorized' }} 5</h6>
+                <div class="d-flex justify-content-between small text-muted">
+                    <span><strong>On</strong> {{ \Carbon\Carbon::parse($blog->published_at)->format('M d, Y') }}</span>
+                    <span><strong>By</strong> {{ $blog->author ?? 'Admin' }}</span>
                 </div>
-                <h5 class="text-dark">{{ $blog->title }}</h5>
-                <a class="btn btn-outline-success rounded-pill mt-3 px-4 py-2" href="#">Explore More</a>
             </div>
-            @endforeach
+            <div class="project-img position-relative mb-3">
+                <!-- Display the first image only if available -->
+                @if($blog->image)
+                    <img src="{{ asset($blog->image) }}" class="img-fluid w-100 rounded" alt="Blog Image">
+                    <div class="blog-plus-icon">
+                        <a href="{{ asset($blog->image) }}" data-lightbox="blog-{{ $blog->id }}" class="btn btn-primary btn-md-square rounded-circle">
+                            <i class="fas fa-plus fa-sm"></i>
+                        </a>
+                    </div>
+                @else
+                    <p>No image available</p> <!-- Optional message when there's no image -->
+                @endif
+            </div>
+            <h5 class="text-dark fw-semibold mb-3">{{ $blog->title }}</h5>
+            <a class="btn btn-outline-success rounded-pill py-2 px-4" href="#">Explore More</a>
+        </div>
+    </div>
+@endforeach
+
         </div>
     </div>
 </div>

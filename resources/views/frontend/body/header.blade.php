@@ -68,8 +68,8 @@
                                         <li><a href="{{ url('technology') }}"><span>Technology</span></a></li>
                                         
                                         <!-- Dropdown for Projects -->
-                                        <li class="dropdown">
-                                            <a href="{{ url('project') }}"><span>Services</span></a>
+                                        <li>
+                                            <a href="{{ url('project') }}"><span>Projects</span></a>
                                             
                                         </li>
                                         
