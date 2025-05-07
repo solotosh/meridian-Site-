@@ -17,14 +17,7 @@
                     <h2>{{ $carousel->title }}</h2>
                     <p>{{ $carousel->description }}</p>
                     @if($carousel->button1_text || $carousel->button2_text)
-                    {{-- <div class="pt-3">
-                        @if($carousel->button1_text)
-                        <a href="{{ $carousel->button1_link ?? '#' }}" class="btn btn-primary rounded-pill me-2">{{ $carousel->button1_text }}</a>
-                        @endif
-                        @if($carousel->button2_text)
-                        <a href="{{ $carousel->button2_link ?? '#' }}" class="btn btn-outline-light rounded-pill">{{ $carousel->button2_text }}</a>
-                        @endif
-                    </div> --}}
+                   
                     @endif
                 </div>
             </div>

@@ -14,7 +14,7 @@
             <h6>Technology List</h6>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li>More Blog</li>
+                <li>Technology</li>
             </ul>
         </div>
     </div>

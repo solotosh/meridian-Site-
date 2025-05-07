@@ -9,10 +9,10 @@
     </div>
     <div class="auto-container">
         <div class="content-box clearfix">
-            <h6>All Services</h6>
+            <h6>All Projects</h6>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li>All Services</li>
+                <li>All Projects</li>
             </ul>
         </div>
     </div>

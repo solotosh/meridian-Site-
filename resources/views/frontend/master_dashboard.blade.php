@@ -59,85 +59,114 @@
   </style>
 
 <style>
- /* Base Floating Button Container */
 /* Floating Buttons Container */
 .floating-buttons {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-/* Common styles for all buttons */
-.floating-buttons a,
-.floating-buttons .contact-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-radius: 50px;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  background-color: #007bff;
-  transition: background-color 0.3s;
-}
-
-/* Icon styles */
-.floating-buttons a i,
-.floating-buttons .contact-toggle i {
-  font-size: 18px;
-}
-
-/* Button-specific background colors */
-.floating-buttons #whatsapp {
-  background-color: #25d366;
-}
-.floating-buttons #call {
-  background-color: #007bff;
-}
-.floating-buttons #callback {
-  background-color: #28a745;
-}
-
-/* Hover effects */
-.floating-buttons a:hover,
-.floating-buttons .contact-toggle:hover {
-  opacity: 0.9;
-}
-
-/* Desktop: Show all options, hide contact toggle */
-@media (min-width: 768px) {
-  .contact-toggle {
-    display: none !important;
-  }
-  .contact-options {
-    display: flex !important;
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-/* Mobile: Hide options initially, show contact toggle */
-@media (max-width: 767px) {
-  .contact-options {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-  }
-  .floating-buttons.show .contact-options {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px; /* Increased gap between buttons */
   }
-}
 
+  /* Common styles for all buttons */
+  .floating-buttons a,
+  .floating-buttons .contact-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #007bff;
+    transition: all 0.3s ease;
+    width: 100%;
+    min-width: 180px;
+  }
 
+  /* Button hover effects */
+  .floating-buttons a:hover,
+  .floating-buttons .contact-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Button active effects */
+  .floating-buttons a:active,
+  .floating-buttons .contact-toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Icon styles */
+  .floating-buttons a i,
+  .floating-buttons .contact-toggle i {
+    font-size: 18px;
+  }
+
+  /* Button-specific background colors */
+  .floating-buttons #whatsapp {
+    background-color: #25d366;
+  }
+  .floating-buttons #call {
+    background-color: #007bff;
+  }
+  .floating-buttons #callback {
+    background-color: #6c757d;
+  }
+  .floating-buttons .contact-toggle {
+    background-color: #343a40;
+  }
+
+  /* Contact options container */
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Consistent spacing between options */
+    width: 100%;
+  }
+
+  /* Desktop: Show all options, hide contact toggle */
+  @media (min-width: 768px) {
+    .contact-toggle {
+      display: none !important;
+    }
+    .contact-options {
+      display: flex !important;
+    }
+  }
+
+  /* Mobile: Hide options initially, show contact toggle */
+  @media (max-width: 767px) {
+    .contact-options {
+      display: none;
+    }
+    .floating-buttons.show .contact-options {
+      display: flex;
+    }
+    .floating-buttons {
+      gap: 10px; /* Slightly smaller gap on mobile */
+    }
+  }
+
+  /* Animation for mobile toggle */
+  .floating-buttons.show .contact-options {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
 .modal {
   position: fixed;
@@ -209,25 +238,29 @@
 <body>
 
     <div class="boxed_wrapper">
-      <div class="floating-buttons" id="floating-buttons">
-        <!-- Toggle button for mobile -->
-        <button id="toggle-buttons" class="contact-toggle">
-          <i class="fas fa-comments"></i> Contact
-        </button>
-      
-        <!-- Contact options -->
-        <div class="contact-options">
-          <a href="tel:+254797169127" id="call"><i class="fas fa-phone-alt"></i> Call</a>
-          <a 
-            href="https://wa.me/254797169127?text=Hello%20Admin,%20I%20am%20interested%20in%20your%20land%20surveying%20services.%20Can%20we%20book%20a%20call?" 
-            id="whatsapp" 
-            target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-          </a>
-          <a href="javascript:void(0);" id="callback"><i class="fas fa-phone"></i> Request Callback</a>
-        </div>
-      </div>
-      
+  
+<div class="floating-buttons" id="floating-buttons">
+  <!-- Toggle button for mobile -->
+  <button id="toggle-buttons" class="contact-toggle">
+    <i class="fas fa-comments"></i> Contact Us
+  </button>
+  
+  <!-- Contact options -->
+  <div class="contact-options">
+    <a href="tel:+254797169127" id="call">
+      <i class="fas fa-phone-alt"></i> Call Now
+    </a>
+    <a href="https://wa.me/254797169127?text=Hello%20Admin,%20I%20am%20interested%20in%20your%20land%20surveying%20services.%20Can%20we%20book%20a%20call?" 
+       id="whatsapp" 
+       target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <a href="javascript:void(0);" id="callback">
+      <i class="fas fa-phone"></i> Request Callback
+    </a>
+  </div>
+</div>
+
 
 
   
@@ -285,6 +318,27 @@
           });
         </script>
         
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const floatingButtons = document.querySelector('.floating-buttons');
+    const toggleButton = document.getElementById('toggle-buttons');
+    
+    // Toggle contact options on mobile
+    if (toggleButton) {
+      toggleButton.addEventListener('click', function() {
+        floatingButtons.classList.toggle('show');
+      });
+    }
+    
+    // Close floating buttons when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!floatingButtons.contains(event.target) && 
+          !event.target.classList.contains('contact-toggle')) {
+        floatingButtons.classList.remove('show');
+      }
+    });
+  });
+  </script>
         
  <a href="javascript:void(0);" id="callback"><i class="fas fa-phone"></i> Request Callback</a>
 

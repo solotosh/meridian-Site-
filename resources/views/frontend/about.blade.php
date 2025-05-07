@@ -92,13 +92,58 @@
         </div>
     </div>
 </section>
+
+     <!-- funfact-section -->
+     @php
+     use App\Models\Funfact;
+     $funfacts = Funfact::all(); // or you can limit: Funfact::take(4)->get();
+ @endphp
+ 
+ <section class="funfact-section centred">
+     <div class="auto-container">
+         <div class="inner-container wow slideInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+             <div class="row clearfix">
+                 @foreach($funfacts as $funfact)
+                     <div class="col-lg-3 col-md-6 col-sm-12 funfact-block">
+                         <div class="funfact-block-one">
+                             <div class="inner-box">
+                                 <div class="count-outer count-box">
+                                     <span class="count-text" data-speed="1500" data-stop="{{ $funfact->count }}">0</span>
+                                 </div>
+                                 <p>{{ $funfact->title }}</p>
+                             </div>
+                         </div>
+                     </div>
+                 @endforeach
+             </div>
+         </div>
+     </div>
+ </section>
+ 
+         <!-- funfact-section end -->
+ 
+ 
+
+
 <!-- End About Section -->
 <!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 @php
     use App\Models\AboutLandSurvey;
 
-    $services = AboutLandSurvey::where('status', 'active')->latest()->get();
+    $services = AboutLandSurvey::where('status', 'active')
+                  ->where(function($query) {
+                      $query->where('title', 'like', '%service%')
+                            ->orWhere('title', 'like', '%Service%')
+                            ->orWhere('title', 'like', '%SERVICE%');
+                  })
+                  ->whereNot(function($query) {
+                      $query->where('title', 'like', '%project%')
+                            ->orWhere('title', 'like', '%Project%');
+                  })
+                  ->latest()
+                  ->get();
 @endphp
 
 <section class="feature-style-three centred pb-110">
@@ -108,24 +153,23 @@
             <h2>Meridian Services</h2>
         </div>
 
-        <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-            @foreach($services as $service)
-                <div class="feature-block-two">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <i class="{{ $service->icon_class ?? 'fas fa-tools' }}"></i>
+        @if($services->count() > 0)
+            <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
+                @foreach($services as $service)
+                    <div class="feature-block-two">
+                        <div class="inner-box">
+                            <div class="icon-box">
+                                <i class="{{ $service->icon_class ?? 'fas fa-tools' }}"></i>
+                            </div>
+                            <h4>{{ $service->title }}</h4>
+                            <p>{{ $service->description }}</p>
                         </div>
-                        <h4>{{ $service->title }}</h4>
-                        <p>{{ $service->description }}</p>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @endif
     </div>
-</section>
-
-
-
+</section> --}}
 
 
         <!-- cta-section -->
@@ -149,36 +193,7 @@
         <!-- cta-section end -->
 
 
-        <!-- funfact-section -->
-        @php
-    use App\Models\Funfact;
-    $funfacts = Funfact::all(); // or you can limit: Funfact::take(4)->get();
-@endphp
-
-<section class="funfact-section centred">
-    <div class="auto-container">
-        <div class="inner-container wow slideInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-            <div class="row clearfix">
-                @foreach($funfacts as $funfact)
-                    <div class="col-lg-3 col-md-6 col-sm-12 funfact-block">
-                        <div class="funfact-block-one">
-                            <div class="inner-box">
-                                <div class="count-outer count-box">
-                                    <span class="count-text" data-speed="1500" data-stop="{{ $funfact->count }}">0</span>
-                                </div>
-                                <p>{{ $funfact->title }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-
-        <!-- funfact-section end -->
-
-
+   
         <!-- testimonial-style-four -->
         @php
         use Illuminate\Support\Str;
