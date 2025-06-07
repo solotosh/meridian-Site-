@@ -27,8 +27,8 @@
 
         <div class="row g-4 justify-content-center">
             @foreach($blogs as $index => $blog)
-            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.{{ $index + 1 }}s">
-                <div class="blog-item bg-light rounded p-4" style="background-image: url('{{ asset('frontend/img/bg.png') }}');">
+            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.{{ $index + 1 }}s">
+                <div class="blog-item bg-light rounded shadow-sm p-4">
                     <div class="mb-4">
                         <h4 class="text-primary mb-2">{{ $blog->category ?? 'Uncategorized' }}</h4>
                         <div class="d-flex justify-content-between">
@@ -39,8 +39,8 @@
         
                     <!-- Image Section -->
                     <div class="project-img position-relative mb-4">
-                        <!-- Show a single image with a link for zoom -->
-                        <a href="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" target="_blank">
+                        <!-- Link to blog detail page -->
+                        <a href="{{ route('blog.show', $blog->id) }}">
                             <img src="{{ asset($blog->image ?? 'frontend/img/default.jpg') }}" class="img-fluid w-100 rounded" alt="Blog Image">
                         </a>
                     </div>

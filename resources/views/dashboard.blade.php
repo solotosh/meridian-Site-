@@ -117,7 +117,7 @@
     <!-- endbuild -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Vendors JS -->
-    <script src="{{asset('backend/assets/vendor/libs/apex-charts/apexcharts.j')}}s"></script>
+    <script src="{{asset('backend/assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
 
     <!-- Main JS -->
     <script src="{{asset('backend/assets/js/main.js')}}"></script>

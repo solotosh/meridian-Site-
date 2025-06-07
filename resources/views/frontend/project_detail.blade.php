@@ -14,7 +14,7 @@
 </div>
 
 <!-- Project Detail -->
-<div class="container-fluid py-5 bg-light">
+<div class="container-fluid py-5 bg-light mt-5"> <!-- Increased margin-top to mt-5 -->
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-6">

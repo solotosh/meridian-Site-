@@ -5,19 +5,16 @@
 
 <style>
     .clients-logo-wrapper {
-        display: flex;
-        justify-content: space-between;
-        gap: 30px; /* Add space between partner logos */
-        flex-wrap: wrap; /* Allow wrapping of content in smaller screens */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+        gap: 30px; /* Space between partner logos */
+        flex-wrap: wrap; /* Allow wrapping of content */
     }
 
     .partner-card {
-        flex: 1 1 30%;  /* Make sure each card takes up to 33% of the container */
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: 33%; /* Ensure that we display 3 items in the row */
-        margin-bottom: 30px;  /* Space between rows */
         transition: transform 0.3s ease;  /* Smooth animation when scaling */
         border: 1px solid #ddd; /* Optional: Add border to each card */
         padding: 20px;  /* Padding for the cards */
@@ -45,10 +42,17 @@
         text-align: center;  /* Center the caption under the image */
     }
 
-    /* For smaller screens, make it a single column */
+    /* For medium devices, reduce the columns to 2 */
+    @media (max-width: 992px) {
+        .clients-logo-wrapper {
+            grid-template-columns: repeat(2, 1fr); /* 2 equal columns on tablets */
+        }
+    }
+
+    /* For smaller screens, stack logos in one column */
     @media (max-width: 768px) {
-        .partner-card {
-            flex: 1 1 100%;  /* Take full width for mobile devices */
+        .clients-logo-wrapper {
+            grid-template-columns: 1fr; /* 1 column on mobile */
         }
     }
 </style>

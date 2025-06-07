@@ -75,7 +75,7 @@
             <h6>All Services</h6>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li>All Services</li>
+                <li>All Services </li>
             </ul>
         </div>
     </div>
@@ -96,26 +96,30 @@
 
 
 
-        <!-- feature-style-three -->
-        <section class="feature-style-three service-page centred">
-            <div class="auto-container">
-                <div class="row clearfix">
-                    @foreach($services as $index => $service)
-                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
-                        <div class="feature-block-two wow fadeInUp animated" 
-                            data-wow-delay="{{ $index * 300 }}ms" 
-                            data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <div class="icon-box"><i class="{{ $service->icon }}"></i></div>
-                                <h4>{{ $service->title }}</h4>
-                                <p>{{ \Illuminate\Support\Str::limit($service->short_des, 100) }}</p>
-                            </div>
+       <!-- feature-style-three -->
+<section class="feature-style-three service-page centred">
+    <div class="auto-container">
+        <div class="row clearfix">
+            @foreach($services as $index => $service)
+            <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+                <!-- Wrap the entire block inside an anchor tag -->
+                <a href="{{ route('service.detail', $service->id) }}" class="feature-block-link">
+                    <div class="feature-block-two wow fadeInUp animated" 
+                        data-wow-delay="{{ $index * 300 }}ms" 
+                        data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <div class="icon-box"><i class="{{ $service->icon }}"></i></div>
+                            <h4>{{ $service->title }}</h4>
+                            <p>{{ \Illuminate\Support\Str::limit($service->short_des, 100) }}</p>
                         </div>
                     </div>
-                    @endforeach
-                </div>
+                </a>
             </div>
-        </section>
+            @endforeach
+        </div>
+    </div>
+</section>
+
         
         <!-- feature-style-three end -->
 

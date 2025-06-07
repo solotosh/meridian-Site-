@@ -145,28 +145,33 @@
     }
   }
 
-  /* Mobile: Hide options initially, show contact toggle */
-  @media (max-width: 767px) {
-    .contact-options {
-      display: none;
-    }
-    .floating-buttons.show .contact-options {
-      display: flex;
-    }
-    .floating-buttons {
-      gap: 10px; /* Slightly smaller gap on mobile */
-    }
+ /* Mobile: Hide options initially, show contact toggle */
+@media (max-width: 767px) {
+  .contact-options {
+    display: none;
+  }
+  .floating-buttons.show .contact-options {
+    display: flex;
+  }
+  .floating-buttons {
+    gap: 10px; /* Slightly smaller gap on mobile */
   }
 
-  /* Animation for mobile toggle */
+  /* Add an animation for showing the contact options */
   .floating-buttons.show .contact-options {
     animation: fadeIn 0.3s ease-out;
   }
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Animation for mobile toggle */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
 .modal {
   position: fixed;
@@ -308,37 +313,36 @@
         
     
         <script>
-          document.addEventListener('DOMContentLoaded', function () {
-            const toggleBtn = document.getElementById('toggle-buttons');
-            const floatingBox = document.getElementById('floating-buttons');
+          document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggle-buttons');
+            const floatingButtons = document.getElementById('floating-buttons');
         
-            toggleBtn.addEventListener('click', function () {
-              floatingBox.classList.toggle('show');
+            // Toggle the contact options visibility on mobile
+            if (toggleButton) {
+              toggleButton.addEventListener('click', function(event) {
+                // Prevent the click from propagating to the document
+                event.stopPropagation();
+                
+                // Toggle the visibility of the floating buttons
+                floatingButtons.classList.toggle('show');
+              });
+            }
+        
+            // Close the floating buttons if clicked outside
+            document.addEventListener('click', function(event) {
+              if (!floatingButtons.contains(event.target) && 
+                  !event.target.classList.contains('contact-toggle')) {
+                floatingButtons.classList.remove('show');
+              }
+            });
+        
+            // Prevent the toggle button from closing the floating buttons when clicked
+            toggleButton.addEventListener('click', function(event) {
+              event.stopPropagation();
             });
           });
         </script>
         
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const floatingButtons = document.querySelector('.floating-buttons');
-    const toggleButton = document.getElementById('toggle-buttons');
-    
-    // Toggle contact options on mobile
-    if (toggleButton) {
-      toggleButton.addEventListener('click', function() {
-        floatingButtons.classList.toggle('show');
-      });
-    }
-    
-    // Close floating buttons when clicking outside
-    document.addEventListener('click', function(event) {
-      if (!floatingButtons.contains(event.target) && 
-          !event.target.classList.contains('contact-toggle')) {
-        floatingButtons.classList.remove('show');
-      }
-    });
-  });
-  </script>
         
  <a href="javascript:void(0);" id="callback"><i class="fas fa-phone"></i> Request Callback</a>
 

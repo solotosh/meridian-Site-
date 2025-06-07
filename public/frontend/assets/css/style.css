@@ -1175,37 +1175,13 @@ img {
   display: none;
 }
 
-.menu-area .mobile-nav-toggler {
-  position: relative;
-  float: right;
-  font-size: 40px;
-  line-height: 50px;
-  cursor: pointer;
-  color: #3786ff;
-  display: none;
-}
 
-.menu-area .mobile-nav-toggler .icon-bar{
-  position: relative;
-  height: 2px;
-  width: 30px;
-  display: block;
-  margin-bottom: 5px;
-  background-color: #111111;
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  -ms-transition: all 300ms ease;
-  -o-transition: all 300ms ease;
-  transition: all 300ms ease;
-}
 
-.main-header.style-two .menu-area .mobile-nav-toggler .icon-bar{
-  background-color: #222;
-}
 
-.menu-area .mobile-nav-toggler .icon-bar:last-child{
-  margin-bottom: 0px;
-}
+
+
+
+
 
 
 /** megamenu-style **/
